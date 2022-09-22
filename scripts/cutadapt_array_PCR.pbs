@@ -22,10 +22,6 @@ mkdir -p log
 
 if [ ! -e $logDir/$idx.cutadapt.done ]
 then
-        cutadapt --untrimmed-o untrimmed1.$idx.fastq.gz --untrimmed-p untrimmed2.$idx.fastq.gz -m 80 --too-short-o short1.$idx.fastq.gz --too-short-p short2.$idx.fastq.gz \
-        -M 80 --too-long-o long1.$idx.fastq.gz --too-long-p long2.$idx.fastq.gz -a ^TGCATTTTTTTCACATC...GGTTACGGCTGTT -A ^AACAGCCGTAACC...GATGTGAAAAAAATGCA \
-         -o trimmed.1.$idx.fastq.gz -p trimmed.2.$idx.fastq.gz $dataDir/PLAB_${idx}_read1.fastq.gz $dataDir/PLAB_${idx}_read2.fastq.gz
-
         cutadapt --untrimmed-o untrimmed1.$idx.fastq.gz --untrimmed-p untrimmed2.$idx.fastq.gz -m 30 --too-short-o too_short1.$idx.fastq.gz --too-short-p too_short2.$idx.fastq.gz \
         -M 30 --too-long-o too_long1.$idx.fastq.gz --too-long-p too_long2.$idx.fastq.gz -a ^CGCCAGCTCTTC...GAAGAGCCACTGGCCGTCGT -A ACGACGGCCAGTGGCTCTTC...GAAGAGCTGGCGAGATCGGA \
         -o GP_PCR_trimmed.$idx.r1.fastq.gz -p GP_PCR_trimmed.$idx.r2.fastq.gz $dataDir/GP_PCR_${idx}_read1.fastq.gz $dataDir/GP_PCR_${idx}_read2.fastq.gz
