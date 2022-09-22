@@ -1,0 +1,255 @@
+This is cutadapt 4.1 with Python 3.10.6
+Command line parameters: --untrimmed-o untrimmed1.1.fastq.gz --untrimmed-p untrimmed2.1.fastq.gz -m 30 --too-short-o too_short1.1.fastq.gz --too-short-p too_short2.1.fastq.gz -M 30 --too-long-o too_long1.1.fastq.gz --too-long-p too_long2.1.fastq.gz -a ^CGCCAGCTCTTC...GAAGAGCCACTGGCCGTCGT -A ACGACGGCCAGTGGCTCTTC...GAAGAGCTGGCGAGATCGGA -o GP_PCR_trimmed.1.r1.fastq.gz -p GP_PCR_trimmed.1.r2.fastq.gz /arc/project/st-cdeboer-1/nick/GibsonPrediction/data/untrimmed/GP_PCR_1_read1.fastq.gz /arc/project/st-cdeboer-1/nick/GibsonPrediction/data/untrimmed/GP_PCR_1_read2.fastq.gz
+Processing paired-end reads on 1 core ...
+Finished in 139.51 s (32 µs/read; 1.90 M reads/minute).
+
+=== Summary ===
+
+Total read pairs processed:          4,415,432
+  Read 1 with adapter:               4,409,266 (99.9%)
+  Read 2 with adapter:               4,395,932 (99.6%)
+
+== Read fate breakdown ==
+Pairs that were too short:              25,012 (0.6%)
+Pairs that were too long:               83,642 (1.9%)
+Pairs discarded as untrimmed:                0 (0.0%)
+Pairs written (passing filters):     4,306,778 (97.5%)
+
+Total basepairs processed: 1,324,629,600 bp
+  Read 1:   662,314,800 bp
+  Read 2:   662,314,800 bp
+Total written (filtered):    258,406,680 bp (19.5%)
+  Read 1:   129,203,340 bp
+  Read 2:   129,203,340 bp
+
+=== First read: Adapter 1 ===
+
+Sequence: CGCCAGCTCTTC...GAAGAGCCACTGGCCGTCGT; Type: linked; Length: 12+20; 5' trimmed: 4409266 times; 3' trimmed: 4399045 times
+
+Minimum overlap: 12+3
+No. of allowed errors: 1
+
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1; 20 bp: 2
+
+Overview of removed sequences at 5' end
+length	count	expect	max.err	error counts
+11	2360	1.1	1	0 2360
+12	4404680	0.3	1	4366215 38465
+13	2226	0.3	1	0 2226
+
+
+
+Overview of removed sequences at 3' end
+length	count	expect	max.err	error counts
+3	6	68991.1	0	6
+5	7	4311.9	0	7
+26	1	0.0	2	1
+69	1	0.0	2	0 1
+70	1	0.0	2	0 0 1
+72	1	0.0	2	1
+76	1	0.0	2	1
+77	3	0.0	2	3
+78	1	0.0	2	1
+80	1	0.0	2	1
+81	1	0.0	2	1
+83	2	0.0	2	2
+84	1	0.0	2	0 1
+86	2	0.0	2	2
+87	2	0.0	2	2
+88	26	0.0	2	25 1
+89	5	0.0	2	5
+90	5	0.0	2	5
+91	6	0.0	2	5 1
+92	2	0.0	2	1 0 1
+93	6	0.0	2	6
+94	8	0.0	2	8
+95	9	0.0	2	9
+96	14	0.0	2	13 0 1
+97	19	0.0	2	18 1
+98	13	0.0	2	12 0 1
+99	6	0.0	2	6
+100	17	0.0	2	16 0 1
+101	7	0.0	2	7
+102	19	0.0	2	18 1
+103	13	0.0	2	13
+104	27	0.0	2	25 0 2
+105	37	0.0	2	31 2 4
+106	242	0.0	2	207 18 17
+107	12611	0.0	2	11570 919 122
+108	4358982	0.0	2	4280133 67788 11061
+109	22938	0.0	2	21673 1169 96
+110	1161	0.0	2	894 245 22
+111	737	0.0	2	670 9 58
+112	98	0.0	2	79 18 1
+113	142	0.0	2	141 1
+114	186	0.0	2	142 44
+115	18	0.0	2	18
+116	316	0.0	2	281 14 21
+117	250	0.0	2	110 2 138
+118	9	0.0	2	9
+119	358	0.0	2	349 8 1
+120	7	0.0	2	7
+121	12	0.0	2	12
+122	279	0.0	2	271 7 1
+123	83	0.0	2	80 3
+124	3	0.0	2	3
+125	5	0.0	2	4 0 1
+126	5	0.0	2	5
+127	4	0.0	2	3 0 1
+128	141	0.0	2	137 4
+129	175	0.0	2	128 1 46
+130	4	0.0	2	3 0 1
+131	3	0.0	2	2 0 1
+132	2	0.0	2	2
+134	2	0.0	2	2
+136	1	0.0	2	1
+138	1	0.0	2	0 0 1
+
+
+=== Second read: Adapter 2 ===
+
+Sequence: ACGACGGCCAGTGGCTCTTC...GAAGAGCTGGCGAGATCGGA; Type: linked; Length: 20+20; 5' trimmed: 4387727 times; 3' trimmed: 4362616 times
+
+Minimum overlap: 3+3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1; 20 bp: 2
+
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1; 20 bp: 2
+
+Overview of removed sequences at 5' end
+length	count	expect	max.err	error counts
+3	2	68991.1	0	2
+4	1	17247.8	0	1
+64	1	0.0	2	1
+65	1	0.0	2	0 0 1
+66	1	0.0	2	1
+68	1	0.0	2	1
+71	1	0.0	2	1
+75	1	0.0	2	1
+76	4	0.0	2	4
+77	16	0.0	2	16
+78	32	0.0	2	32
+79	269	0.0	2	197 9 63
+80	9549	0.0	2	6809 2653 87
+81	4374464	0.0	2	4296383 65183 12898
+82	3306	0.0	2	2474 721 111
+83	17	0.0	2	13 2 2
+84	5	0.0	2	5
+85	2	0.0	2	2
+87	3	0.0	2	3
+88	5	0.0	2	5
+89	1	0.0	2	1
+90	1	0.0	2	1
+91	4	0.0	2	4
+92	2	0.0	2	2
+93	3	0.0	2	3
+95	1	0.0	2	1
+96	3	0.0	2	2 1
+97	1	0.0	2	1
+98	19	0.0	2	19
+100	2	0.0	2	2
+101	1	0.0	2	1
+102	4	0.0	2	4
+103	1	0.0	2	1
+104	1	0.0	2	1
+105	1	0.0	2	1
+106	1	0.0	2	0 0 1
+
+
+
+Overview of removed sequences at 3' end
+length	count	expect	max.err	error counts
+3	5023	68991.1	0	5023
+4	530	17247.8	0	530
+5	13	4311.9	0	13
+6	1	1078.0	0	1
+7	1	269.5	0	1
+8	3	67.4	0	3
+9	1	16.8	0	1
+10	2	4.2	1	0 2
+11	1	1.1	1	1
+12	1	0.3	1	0 1
+14	2	0.0	1	2
+15	2	0.0	1	2
+16	1	0.0	1	1
+17	2	0.0	1	1 1
+18	5	0.0	1	5
+19	26	0.0	1	22 4
+20	6	0.0	2	4 2
+21	5	0.0	2	5
+22	26	0.0	2	26
+23	3	0.0	2	2 0 1
+24	9	0.0	2	9
+25	8	0.0	2	7 1
+26	9	0.0	2	9
+27	15	0.0	2	14 0 1
+28	21	0.0	2	21
+29	17	0.0	2	16 1
+30	6	0.0	2	6
+31	19	0.0	2	18 0 1
+32	13	0.0	2	11 1 1
+33	21	0.0	2	21
+34	14	0.0	2	13 0 1
+35	26	0.0	2	26
+36	31	0.0	2	29 1 1
+37	157	0.0	2	148 7 2
+38	11880	0.0	2	11353 389 138
+39	4310663	0.0	2	4210183 84048 16432
+40	29167	0.0	2	28124 868 175
+41	1302	0.0	2	1247 51 4
+42	887	0.0	2	862 20 5
+43	266	0.0	2	255 7 4
+44	151	0.0	2	142 7 2
+45	184	0.0	2	182 2
+46	177	0.0	2	171 6
+47	314	0.0	2	305 9
+48	249	0.0	2	246 3
+49	13	0.0	2	10 3
+50	357	0.0	2	341 14 2
+51	10	0.0	2	7 1 2
+52	15	0.0	2	13 1 1
+53	278	0.0	2	273 5
+54	96	0.0	2	94 1 1
+55	97	0.0	2	96 1
+56	78	0.0	2	74 2 2
+57	5	0.0	2	4 1
+58	20	0.0	2	4 0 16
+59	146	0.0	2	136 8 2
+60	126	0.0	2	123 2 1
+61	8	0.0	2	8
+62	49	0.0	2	47 2
+63	2	0.0	2	2
+64	1	0.0	2	0 0 1
+65	2	0.0	2	1 1
+66	4	0.0	2	4
+67	1	0.0	2	1
+68	2	0.0	2	2
+69	3	0.0	2	0 0 3
+71	3	0.0	2	3
+72	2	0.0	2	2
+73	1	0.0	2	1
+76	5	0.0	2	5
+77	2	0.0	2	2
+78	1	0.0	2	1
+85	1	0.0	2	0 1
+91	1	0.0	2	1
+94	2	0.0	2	2
+96	1	0.0	2	1
+99	1	0.0	2	1
+100	2	0.0	2	2
+109	2	0.0	2	2
+116	1	0.0	2	1
+119	2	0.0	2	2
+120	1	0.0	2	1
+121	4	0.0	2	4
+124	2	0.0	2	2
+126	1	0.0	2	1
+127	1	0.0	2	1
+128	1	0.0	2	1
+131	1	0.0	2	1
+132	1	0.0	2	1
+135	2	0.0	2	2
+136	1	0.0	2	1
+143	1	0.0	2	0 1

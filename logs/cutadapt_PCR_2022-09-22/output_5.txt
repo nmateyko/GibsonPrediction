@@ -1,0 +1,243 @@
+This is cutadapt 4.1 with Python 3.10.6
+Command line parameters: --untrimmed-o untrimmed1.5.fastq.gz --untrimmed-p untrimmed2.5.fastq.gz -m 30 --too-short-o too_short1.5.fastq.gz --too-short-p too_short2.5.fastq.gz -M 30 --too-long-o too_long1.5.fastq.gz --too-long-p too_long2.5.fastq.gz -a ^CGCCAGCTCTTC...GAAGAGCCACTGGCCGTCGT -A ACGACGGCCAGTGGCTCTTC...GAAGAGCTGGCGAGATCGGA -o GP_PCR_trimmed.5.r1.fastq.gz -p GP_PCR_trimmed.5.r2.fastq.gz /arc/project/st-cdeboer-1/nick/GibsonPrediction/data/untrimmed/GP_PCR_5_read1.fastq.gz /arc/project/st-cdeboer-1/nick/GibsonPrediction/data/untrimmed/GP_PCR_5_read2.fastq.gz
+Processing paired-end reads on 1 core ...
+Finished in 134.67 s (32 µs/read; 1.87 M reads/minute).
+
+=== Summary ===
+
+Total read pairs processed:          4,202,038
+  Read 1 with adapter:               4,196,776 (99.9%)
+  Read 2 with adapter:               4,181,784 (99.5%)
+
+== Read fate breakdown ==
+Pairs that were too short:              22,057 (0.5%)
+Pairs that were too long:               74,216 (1.8%)
+Pairs discarded as untrimmed:                0 (0.0%)
+Pairs written (passing filters):     4,105,765 (97.7%)
+
+Total basepairs processed: 1,260,611,400 bp
+  Read 1:   630,305,700 bp
+  Read 2:   630,305,700 bp
+Total written (filtered):    246,345,900 bp (19.5%)
+  Read 1:   123,172,950 bp
+  Read 2:   123,172,950 bp
+
+=== First read: Adapter 1 ===
+
+Sequence: CGCCAGCTCTTC...GAAGAGCCACTGGCCGTCGT; Type: linked; Length: 12+20; 5' trimmed: 4196776 times; 3' trimmed: 4187152 times
+
+Minimum overlap: 12+3
+No. of allowed errors: 1
+
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1; 20 bp: 2
+
+Overview of removed sequences at 5' end
+length	count	expect	max.err	error counts
+11	2147	1.0	1	0 2147
+12	4192456	0.3	1	4155077 37379
+13	2173	0.3	1	0 2173
+
+
+
+Overview of removed sequences at 3' end
+length	count	expect	max.err	error counts
+3	5	65656.8	0	5
+5	1	4103.6	0	1
+69	2	0.0	2	1 1
+77	4	0.0	2	4
+79	1	0.0	2	1
+82	2	0.0	2	2
+83	1	0.0	2	1
+84	1	0.0	2	1
+86	6	0.0	2	6
+87	1	0.0	2	1
+88	25	0.0	2	25
+89	1	0.0	2	1
+90	2	0.0	2	2
+91	10	0.0	2	10
+92	6	0.0	2	6
+93	8	0.0	2	7 1
+94	37	0.0	2	33 3 1
+95	7	0.0	2	6 1
+96	8	0.0	2	8
+97	4	0.0	2	3 1
+98	7	0.0	2	7
+99	8	0.0	2	8
+100	15	0.0	2	15
+101	9	0.0	2	9
+102	11	0.0	2	10 1
+103	7	0.0	2	6 1
+104	13	0.0	2	12 1
+105	21	0.0	2	15 4 2
+106	220	0.0	2	189 16 15
+107	11221	0.0	2	10621 486 114
+108	4151508	0.0	2	4050307 88593 12608
+109	20839	0.0	2	20024 714 101
+110	953	0.0	2	853 92 8
+111	651	0.0	2	602 17 32
+112	55	0.0	2	52 3
+113	138	0.0	2	135 3
+114	173	0.0	2	153 20
+115	12	0.0	2	12
+116	311	0.0	2	304 6 1
+117	152	0.0	2	129 1 22
+118	3	0.0	2	3
+119	333	0.0	2	325 8
+120	6	0.0	2	6
+121	19	0.0	2	19
+122	268	0.0	2	264 4
+123	32	0.0	2	30 2
+124	4	0.0	2	4
+125	1	0.0	2	1
+126	4	0.0	2	3 1
+127	4	0.0	2	3 0 1
+128	1	0.0	2	1
+129	10	0.0	2	5 0 5
+130	4	0.0	2	2 0 2
+131	1	0.0	2	0 0 1
+132	2	0.0	2	2
+134	1	0.0	2	1
+137	3	0.0	2	0 0 3
+
+
+=== Second read: Adapter 2 ===
+
+Sequence: ACGACGGCCAGTGGCTCTTC...GAAGAGCTGGCGAGATCGGA; Type: linked; Length: 20+20; 5' trimmed: 4174501 times; 3' trimmed: 4155386 times
+
+Minimum overlap: 3+3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1; 20 bp: 2
+
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1; 20 bp: 2
+
+Overview of removed sequences at 5' end
+length	count	expect	max.err	error counts
+3	7	65656.8	0	7
+4	3	16414.2	0	3
+46	1	0.0	2	1
+58	1	0.0	2	1
+66	1	0.0	2	1
+69	1	0.0	2	1
+70	1	0.0	2	1
+73	1	0.0	2	0 0 1
+74	1	0.0	2	1
+76	1	0.0	2	1
+77	15	0.0	2	14 1
+78	28	0.0	2	28
+79	228	0.0	2	211 3 14
+80	7893	0.0	2	6698 1116 79
+81	4163606	0.0	2	4090255 61398 11953
+82	2632	0.0	2	2277 297 58
+83	15	0.0	2	15
+84	5	0.0	2	5
+85	2	0.0	2	2
+86	6	0.0	2	6
+87	3	0.0	2	3
+88	2	0.0	2	2
+89	5	0.0	2	5
+90	1	0.0	2	1
+91	2	0.0	2	2
+92	1	0.0	2	1
+93	1	0.0	2	1
+94	4	0.0	2	4
+95	2	0.0	2	2
+96	1	0.0	2	1
+98	19	0.0	2	19
+99	2	0.0	2	2
+100	1	0.0	2	1
+101	4	0.0	2	4
+102	1	0.0	2	1
+104	1	0.0	2	1
+106	1	0.0	2	1
+107	1	0.0	2	1
+134	1	0.0	2	1
+
+
+
+Overview of removed sequences at 3' end
+length	count	expect	max.err	error counts
+3	3749	65656.8	0	3749
+4	493	16414.2	0	493
+5	25	4103.6	0	25
+6	4	1025.9	0	4
+8	4	64.1	0	4
+10	2	4.0	1	1 1
+11	1	1.0	1	0 1
+13	2	0.1	1	2
+14	2	0.0	1	2
+15	1	0.0	1	1
+16	1	0.0	1	1
+17	6	0.0	1	6
+18	2	0.0	1	2
+19	29	0.0	1	29
+20	1	0.0	2	1
+21	5	0.0	2	4 0 1
+22	28	0.0	2	28
+23	6	0.0	2	6
+24	7	0.0	2	7
+25	14	0.0	2	13 1
+26	10	0.0	2	10
+27	9	0.0	2	9
+28	6	0.0	2	4 1 1
+29	8	0.0	2	8
+30	9	0.0	2	9
+31	20	0.0	2	20
+32	11	0.0	2	11
+33	15	0.0	2	14 1
+34	14	0.0	2	14
+35	12	0.0	2	12
+36	17	0.0	2	15 0 2
+37	134	0.0	2	128 5 1
+38	10293	0.0	2	9907 284 102
+39	4110947	0.0	2	4012975 82903 15069
+40	25856	0.0	2	24953 725 178
+41	1141	0.0	2	1086 49 6
+42	718	0.0	2	698 16 4
+43	145	0.0	2	144 1
+44	141	0.0	2	140 0 1
+45	171	0.0	2	169 2
+46	39	0.0	2	39
+47	307	0.0	2	298 9
+48	155	0.0	2	148 6 1
+49	3	0.0	2	3
+50	332	0.0	2	321 10 1
+51	11	0.0	2	7 2 2
+52	17	0.0	2	17
+53	265	0.0	2	255 10
+54	37	0.0	2	35 0 2
+55	38	0.0	2	37 1
+56	12	0.0	2	10 0 2
+57	4	0.0	2	4
+58	33	0.0	2	1 3 29
+59	3	0.0	2	3
+60	6	0.0	2	5 0 1
+61	4	0.0	2	2 0 2
+62	9	0.0	2	9
+63	2	0.0	2	1 1
+64	3	0.0	2	2 1
+66	2	0.0	2	1 0 1
+67	5	0.0	2	4 0 1
+68	4	0.0	2	3 0 1
+71	2	0.0	2	2
+72	1	0.0	2	1
+74	3	0.0	2	3
+76	5	0.0	2	5
+77	2	0.0	2	2
+79	1	0.0	2	1
+85	1	0.0	2	1
+87	2	0.0	2	2
+90	2	0.0	2	2
+92	1	0.0	2	1
+93	2	0.0	2	2
+100	1	0.0	2	1
+101	2	0.0	2	2
+109	1	0.0	2	1
+120	1	0.0	2	1
+124	1	0.0	2	1
+126	1	0.0	2	1
+127	1	0.0	2	1
+131	2	0.0	2	2
+132	1	0.0	2	1
+143	3	0.0	2	3
