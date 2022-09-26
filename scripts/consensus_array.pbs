@@ -28,7 +28,7 @@ mkdir -p log
 if [ ! -e $logDir/$idx.consensus.done ]
 then
         /arc/project/st-cdeboer-1/nick/GibsonPrediction/scripts/consensus_reads.py \
-        -i1 $dataDir/$read1 -i2 $dataDir/$read2 -o $outfile.txt.gz -l log.txt.gz
+        -i1 $dataDir/$read1 -i2 $dataDir/$read2 -o $outFile.txt.gz -l $outFile.log.txt.gz
         
         touch $logDir/$idx.consensus.done
 else
