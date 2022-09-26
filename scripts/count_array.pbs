@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#PBS -l walltime=2:00:00,select=1:ncpus=1:mem=4gb
+#PBS -l walltime=5:00:00,select=1:ncpus=1:mem=4gb
 #PBS -J 1-16
 #PBS -N count_gp
 #PBS -M nicholas.mateyko@ubc.ca
@@ -26,7 +26,7 @@ mkdir -p log
 if [ ! -e $logDir/$idx.count.done ]
 then
         /arc/project/st-cdeboer-1/nick/GibsonPrediction/scripts/count_reads.py \
-        -i $dataDir/{$sample}_trimmed.txt.gz -o $sample -l $sample.log.txt -t 3
+        -i $dataDir/${sample}_trimmed.txt.gz -o $sample -l $sample.log.txt -t 3
         
         touch $logDir/$idx.count.done
 else
