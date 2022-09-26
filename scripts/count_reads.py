@@ -16,9 +16,10 @@ parser.add_argument('-o', dest='outFP', metavar='<outFile>', help='Where to outp
 parser.add_argument('-d', dest='downsample', type=int, metavar='<downsample n>', help='Number of reads to downsample to')
 parser.add_argument('-l', dest='logFP', metavar='<logFile>', help='Where to output errors/warnings', required=True)
 parser.add_argument('-t', dest='threshold', type=int, default=2, help='Threshold for umi clustering')
+parser.add_argument('-m', dest='method', type=str, default='directional', choices=['directional', 'cluster', 'adjacency'], help='Algorithm for umi clustering')
 args = parser.parse_args()
 
-clusterer = UMIClusterer(cluster_method="directional")
+clusterer = UMIClusterer(cluster_method=args.method)
 
 with gzip.open(args.inFP, 'rt') as inFile:
   seqs = inFile.read().splitlines()
