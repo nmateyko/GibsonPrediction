@@ -1,0 +1,17 @@
+ArrayTaskID  Sample          
+1            GP_PCR_1
+2            GP_PCR_2
+3            GP_PCR_3
+4            GP_PCR_4
+5            GP_PCR_5
+6            GP_PCR_6
+7            GP_PCR_7
+8            GP_PCR_8
+9            GP_LIG_1
+10           GP_LIG_2
+11           GP_LIG_3
+12           GP_LIG_4
+13           GP_LIG_5
+14           GP_LIG_6
+15           GP_LIG_7
+16           GP_LIG_8
