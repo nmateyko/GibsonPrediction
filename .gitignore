@@ -2,3 +2,4 @@ data/
 *.fastq.gz
 __pycache__/
 bartender_data/
+starcode_data/
