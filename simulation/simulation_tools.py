@@ -73,12 +73,12 @@ def compare_counter_dicts(ref, clustered):
   center_not_found = []
   count_diff = []
   for true_seq in ref:
-    try:
+    if true_seq in clustered:
       cluster = clustered[true_seq]
       count = cluster.total()
       true_count = ref[true_seq].total()
       count_diff.append(count / true_count)
-    except KeyError:
+    else:
       center_not_found.append(true_seq)
   return count_diff, center_not_found
 
