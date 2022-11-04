@@ -7,6 +7,7 @@ from sklearn.metrics.pairwise import pairwise_distances_chunked
 import matplotlib.pyplot as plt
 
 LENGTH = 30
+SIZE = 100000
 
 def second_smallest(a):
     return np.partition(a, 1)[1]
@@ -24,7 +25,7 @@ def reduce_func(D_chunk, start):
 # reduced = pairwise_distances_chunked(test_array1, metric='hamming', reduce_func=reduce_func)
 # print([j * 5 for i in reduced for j in i])
 
-random_seqs = np.array([np.array(random.choices([0, 1, 2, 3], k=LENGTH)) for i in range(10000)])
+random_seqs = np.array([np.array(random.choices([0, 1, 2, 3], k=LENGTH)) for i in range(SIZE)])
 # print(random_seqs[0])
 reduced = pairwise_distances_chunked(random_seqs, metric='hamming', reduce_func=reduce_func)
 min_dists = [j * LENGTH for i in reduced for j in i]
