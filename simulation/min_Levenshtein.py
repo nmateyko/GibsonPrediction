@@ -16,7 +16,7 @@ for i, seq1 in tqdm(enumerate(random_seqs)):
       d = distance(seq1, seq2)
       if d < min:
         min = d
-  min_dists.append(d)
+  min_dists.append(min)
 
 plt.hist(min_dists, bins=(range(max(min_dists) + 1)))
 plt.show()
