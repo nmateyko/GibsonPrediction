@@ -1,0 +1,17 @@
+sample ID	indexes	sample name
+GP_PCR_1	CTCACAAC-AGCTACCA	PCR_small_input_rep1
+GP_PCR_2	TCTTCCTG-CGTTGGAA	PCR_large_input_rep1
+GP_PCR_3	CCGTACAT-TTCAGTTG	PCR_small_input_rep2
+GP_PCR_4	TACCTGGT-AGACCTCA	PCR_large_input_rep2
+GP_PCR_5	AATGCCAA-ACGCACAA	PCR_small_assembled_rep1
+GP_PCR_6	CTAGAACC-TTAGACCA	PCR_large_assembled_rep1
+GP_PCR_7	ACTGGAAT-TTCACAGA	PCR_small_assembled_rep2
+GP_PCR_8	AGCATAGT-CTCGACTG	PCR_large_assembled_rep2
+GP_LIG_1	ACTATTGC-ACACAGGA	LIG_small_input_rep1
+GP_LIG_2	TACGATTC-CTCTTCCG	LIG_large_input_rep1
+GP_LIG_3	TGCAGTGG-AAGAAGCT	LIG_small_assembled_rep1
+GP_LIG_4	TGCGAGGA-TAACCGTA	LIG_large_assembled_rep1
+GP_LIG_5	ACGCCACA-TGGTTCGG	LIG_small_input_rep2
+GP_LIG_6	CTTCGGTC-TAACGATG	LIG_large_input_rep2
+GP_LIG_7	ACGGAGGT-AACTCTCG	LIG_small_assembled_rep2
+GP_LIG_8	AGAATCAG-CTGTCGTA	LIG_large_assembled_rep2

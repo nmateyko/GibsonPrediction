@@ -1,0 +1,101 @@
+configfile: "pipeline_config.yaml"
+
+def get_input_fastqs(wildcards):
+    if wildcards.sample == "test":
+        return ["test/test_r1.fastq.gz", "test/test_r2.fastq.gz"]
+
+    else:
+        sample_suffix = config["samples"][wildcards.sample]
+        data_dir = "/arc/project/st-cdeboer-1/GSC-seq/2022-08-17_Omar_Nick"
+        return [f"{data_dir}/HNJKLDSX3_2_1_{sample_suffix}", f"{data_dir}/HNJKLDSX3_2_2_{sample_suffix}"]
+
+
+rule all:
+    input:
+        expand("output/counts/{sample}.pkl", sample=config["samples"])
+
+
+rule cutadapt_trim_PE:
+    input:
+        r1="output/sampled/{sample}_1.fastq",
+        r2="output/sampled/{sample}_2.fastq"
+    output: 
+        r1=temp("output/trimmed/{sample}_1.fastq"),
+        r2=temp("output/trimmed/{sample}_2.fastq")
+    log:
+        summary="output/logs/cutadapt/{sample}_cutadapt.log",
+        untrimmed_1="output/logs/cutadapt/{sample}_untrimmed_1.fastq.gz",
+        untrimmed_2="output/logs/cutadapt/{sample}_untrimmed_2.fastq.gz",
+        short_1="output/logs/cutadapt/{sample}_short_1.fastq.gz",
+        short_2="output/logs/cutadapt/{sample}_short_2.fastq.gz",
+        long_1="output/logs/cutadapt/{sample}_long_1.fastq.gz",
+        long_2="output/logs/cutadapt/{sample}_long_2.fastq.gz",
+    conda:
+        "environment.yaml"
+    params:
+        a1="^TGCATTTTTTTCACATC...GGTTACGGCTGTT",
+        a2="^AACAGCCGTAACC...GATGTGAAAAAAATGCA",
+        min_len=80,
+        max_len=80,
+    threads: 1
+    resources:
+        mem_mb=4800,
+        walltime="00:20:00"
+    shell:
+        "cutadapt -j {threads} --untrimmed-o {log.untrimmed_1} --untrimmed-p {log.untrimmed_2} "
+        "-m {params.min_len} --too-short-o {log.short_1} --too-short-p {log.short_2} "
+        "-M {params.max_len} --too-long-o {log.long_1} --too-long-p {log.long_2} "
+        "-a {params.a1} -A {params.a2} -o {output.r1} -p {output.r2} {input} > {log.summary}"
+
+
+rule pair:
+    input:
+        r1="output/trimmed/{sample}_1.fastq",
+        r2="output/trimmed/{sample}_2.fastq"
+    output: 
+        temp("output/paired/{sample}.txt")
+    log:
+        "output/logs/pair/pairing_failed_{sample}.log"
+    conda:
+        "environment.yaml"
+    threads: 1
+    resources:
+        mem_mb=4800,
+        walltime="00:20:00"
+    script:
+        "scripts/pair_reads.py"
+        
+
+rule cluster:
+    input:
+        "output/paired/{sample}.txt"
+    output:
+        temp("output/clustered/{sample}.txt")
+    log:
+        "output/logs/starcode/{sample}_starcode.log"
+    conda:
+        "environment.yaml"
+    params:
+        distance=3
+    threads: 1
+    resources:
+        mem_mb=4800,
+        walltime="00:20:00"
+    shell:
+        "starcode -i {input} -o {output} --print-clusters --seq-id -c -t {threads} -d {params.distance} > {log}"
+
+
+rule count:
+    input:
+        "output/paired/{sample}.txt",
+        "output/clustered/{sample}.txt"
+    output:
+        "output/counts/{sample}.pkl"
+    conda:
+        "environment.yaml"
+    threads: 1
+    resources:
+        mem_mb=4800,
+        walltime="00:20:00"
+    script:
+        "scripts/starcode_to_counter.py"

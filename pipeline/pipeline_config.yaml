@@ -1,0 +1,18 @@
+samples:
+    PCR_small_input_rep1: CTCACAAC-AGCTACCA_150bp.concat.fastq.gz
+    PCR_large_input_rep1: TCTTCCTG-CGTTGGAA_150bp.concat.fastq.gz
+    PCR_small_input_rep2: CCGTACAT-TTCAGTTG_150bp.concat.fastq.gz
+    PCR_large_input_rep2: TACCTGGT-AGACCTCA_150bp.concat.fastq.gz
+    PCR_small_assembled_rep1: AATGCCAA-ACGCACAA_150bp.concat.fastq.gz
+    PCR_large_assembled_rep1: CTAGAACC-TTAGACCA_150bp.concat.fastq.gz
+    PCR_small_assembled_rep2: ACTGGAAT-TTCACAGA_150bp.concat.fastq.gz
+    PCR_large_assembled_rep2: AGCATAGT-CTCGACTG_150bp.concat.fastq.gz
+    LIG_small_input_rep1: ACTATTGC-ACACAGGA_150bp.concat.fastq.gz
+    LIG_large_input_rep1: TACGATTC-CTCTTCCG_150bp.concat.fastq.gz
+    LIG_small_assembled_rep1: TGCAGTGG-AAGAAGCT_150bp.concat.fastq.gz
+    LIG_large_assembled_rep1: TGCGAGGA-TAACCGTA_150bp.concat.fastq.gz
+    LIG_small_input_rep2: ACGCCACA-TGGTTCGG_150bp.concat.fastq.gz
+    LIG_large_input_rep2: CTTCGGTC-TAACGATG_150bp.concat.fastq.gz
+    LIG_small_assembled_rep2: ACGGAGGT-AACTCTCG_150bp.concat.fastq.gz
+    LIG_large_assembled_rep2: AGAATCAG-CTGTCGTA_150bp.concat.fastq.gz
+    test: test
