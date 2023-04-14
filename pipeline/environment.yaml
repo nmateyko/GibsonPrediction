@@ -4,3 +4,4 @@ channels:
 dependencies:
   - cutadapt=4.1
   - starcode=1.4
+  - pandas>=1.4

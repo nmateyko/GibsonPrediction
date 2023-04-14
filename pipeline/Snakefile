@@ -1,42 +1,73 @@
 configfile: "pipeline_config.yaml"
 
+SAMPLES = [
+    "PCR_small_rep1", "PCR_large_rep1", "PCR_small_rep2", "PCR_large_rep2",
+    "LIG_small_rep1", "LIG_large_rep1", "LIG_small_rep2", "LIG_large_rep2", 
+    "test"
+]
+
 def get_input_fastqs(wildcards):
     if wildcards.sample == "test":
-        return ["test/test_r1.fastq.gz", "test/test_r2.fastq.gz"]
-
+        if wildcards.timepoint == "input":
+            return ["test/test_input_r1.fastq.gz", "test/test_input_r2.fastq.gz"]
+        else:
+            return ["test/test_assembled_r1.fastq.gz", "test/test_assembled_r2.fastq.gz"]
     else:
-        sample_suffix = config["samples"][wildcards.sample]
+        sample_suffix = config["samples"][f"{wildcards.sample}_{wildcards.timepoint}"]
         data_dir = "/arc/project/st-cdeboer-1/GSC-seq/2022-08-17_Omar_Nick"
         return [f"{data_dir}/HNJKLDSX3_2_1_{sample_suffix}", f"{data_dir}/HNJKLDSX3_2_2_{sample_suffix}"]
+
+def get_adapter_sequence_r1(wildcards):
+    if wildcards.sample[:3] == "PCR" or wildcards.sample == "test":
+        return "^CGCCAGCTCTTC...GAAGAGCCACTGGCCGTCGT"
+    elif wildcards.sample[:3] == "LIG":
+        return "AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC"
+    else:
+        raise ValueError("File name does not start with LIG or PCR and is not test")
+
+def get_adapter_sequence_r2(wildcards):
+    if wildcards.sample[:3] == "PCR" or wildcards.sample == "test":
+        return "ACGACGGCCAGTGGCTCTTC...GAAGAGCTGGCGAGATCGGA"
+    elif wildcards.sample[:3] == "LIG":
+        return "AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGT"
+    else:
+        raise ValueError("File name does not start with LIG or PCR and is not test")
+
+def get_length(wildcards):
+    if wildcards.sample[:3] == "PCR" or wildcards.sample == "test":
+        return 30
+    elif wildcards.sample[:3] == "LIG":
+        return 28
+    else:
+        raise ValueError("File name does not start with LIG or PCR and is not test")
 
 
 rule all:
     input:
-        expand("output/counts/{sample}.pkl", sample=config["samples"])
+        expand("output/counts/{sample}_count_df.pkl", sample=SAMPLES)
 
 
 rule cutadapt_trim_PE:
     input:
-        r1="output/sampled/{sample}_1.fastq",
-        r2="output/sampled/{sample}_2.fastq"
+        get_input_fastqs
     output: 
-        r1=temp("output/trimmed/{sample}_1.fastq"),
-        r2=temp("output/trimmed/{sample}_2.fastq")
+        r1=temp("output/trimmed/{sample}_{timepoint}_1.fastq"),
+        r2=temp("output/trimmed/{sample}_{timepoint}_2.fastq")
     log:
-        summary="output/logs/cutadapt/{sample}_cutadapt.log",
-        untrimmed_1="output/logs/cutadapt/{sample}_untrimmed_1.fastq.gz",
-        untrimmed_2="output/logs/cutadapt/{sample}_untrimmed_2.fastq.gz",
-        short_1="output/logs/cutadapt/{sample}_short_1.fastq.gz",
-        short_2="output/logs/cutadapt/{sample}_short_2.fastq.gz",
-        long_1="output/logs/cutadapt/{sample}_long_1.fastq.gz",
-        long_2="output/logs/cutadapt/{sample}_long_2.fastq.gz",
+        summary="output/logs/cutadapt/{sample}_{timepoint}_cutadapt.log",
+        untrimmed_1="output/logs/cutadapt/{sample}_{timepoint}_untrimmed_1.fastq.gz",
+        untrimmed_2="output/logs/cutadapt/{sample}_{timepoint}_untrimmed_2.fastq.gz",
+        short_1="output/logs/cutadapt/{sample}_{timepoint}_short_1.fastq.gz",
+        short_2="output/logs/cutadapt/{sample}_{timepoint}_short_2.fastq.gz",
+        long_1="output/logs/cutadapt/{sample}_{timepoint}_long_1.fastq.gz",
+        long_2="output/logs/cutadapt/{sample}_{timepoint}_long_2.fastq.gz",
     conda:
         "environment.yaml"
     params:
-        a1="^TGCATTTTTTTCACATC...GGTTACGGCTGTT",
-        a2="^AACAGCCGTAACC...GATGTGAAAAAAATGCA",
-        min_len=80,
-        max_len=80,
+        a1=get_adapter_sequence_r1,
+        a2 = get_adapter_sequence_r2,
+        min_len=get_length,
+        max_len=get_length,
     threads: 1
     resources:
         mem_mb=4800,
@@ -50,12 +81,12 @@ rule cutadapt_trim_PE:
 
 rule pair:
     input:
-        r1="output/trimmed/{sample}_1.fastq",
-        r2="output/trimmed/{sample}_2.fastq"
+        r1="output/trimmed/{sample}_{timepoint}_1.fastq",
+        r2="output/trimmed/{sample}_{timepoint}_2.fastq"
     output: 
-        temp("output/paired/{sample}.txt")
+        temp("output/paired/{sample}_{timepoint}.txt")
     log:
-        "output/logs/pair/pairing_failed_{sample}.log"
+        "output/logs/pair/pairing_failed_{sample}_{timepoint}.log"
     conda:
         "environment.yaml"
     threads: 1
@@ -68,29 +99,38 @@ rule pair:
 
 rule cluster:
     input:
-        "output/paired/{sample}.txt"
+        "output/paired/{sample}_input.txt",
+        "output/paired/{sample}_assembled.txt"
     output:
-        temp("output/clustered/{sample}.txt")
+        concat=temp("output/paired/concat_{sample}.txt"),
+        clustered=temp("output/clustered/{sample}.txt")
     log:
         "output/logs/starcode/{sample}_starcode.log"
     conda:
         "environment.yaml"
     params:
-        distance=3
-    threads: 1
+        distance=3,
+        threads=4
+    threads: 4
     resources:
-        mem_mb=4800,
-        walltime="00:20:00"
+        mem_mb=19200,
+        walltime="01:00:00"
     shell:
-        "starcode -i {input} -o {output} --print-clusters --seq-id -c -t {threads} -d {params.distance} > {log}"
+        """
+        cat {input} > {output.concat}
+        starcode -i {output.concat} -o {output.clustered} --print-clusters --seq-id -c -t {params.threads} -d {params.distance} > {log}
+        """
 
 
 rule count:
     input:
-        "output/paired/{sample}.txt",
-        "output/clustered/{sample}.txt"
+        "output/paired/concat_{sample}.txt",
+        "output/clustered/{sample}.txt",
+        "output/paired/{sample}_input.txt"
     output:
-        "output/counts/{sample}.pkl"
+        "output/counts/{sample}_cluster_counts_input.pkl",
+        "output/counts/{sample}_cluster_counts_assembled.pkl",
+        "output/counts/{sample}_count_df.pkl"
     conda:
         "environment.yaml"
     threads: 1
