@@ -5,4 +5,4 @@ bartender_data/
 starcode_data/
 .ipynb_checkpoints/
 GibsonPrediction.egg-info/
-!pipeline/test/*
+!old_pipeline/test/*
