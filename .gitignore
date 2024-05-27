@@ -6,3 +6,7 @@ starcode_data/
 .ipynb_checkpoints/
 GibsonPrediction.egg-info/
 !old_pipeline/test/*
+cluster_logs/
+output/
+.snakemake
+NGmerge/
