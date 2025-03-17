@@ -1,0 +1,13 @@
+data_dir: /arc/project/st-cdeboer-1/nick/GSC_seq_20240313
+
+samples:
+    linear_rep_1: TAGAGGCT-CGTGGAGT
+    linear_rep_2: CGATGGTG-CACTACTT
+
+adapters:
+    up:
+        a1: "atgaccatgattacgccaGCTCTTC...AGATCGGAAGAGCACACGTCTGAAC"
+        a2: "TCCCTACACGACGCTCTTCCGATCT...GAAGAGCtggcgtaatcatggtcat"
+    down:
+        a1: "GTTCAGACGTGTGCTCTTCCGATCT...GAAGAGCcactggccgtcgttttac"
+        a2: "gtaaaacgacggccagtgGCTCTTC...AGATCGGAAGAGCGTCGTGTAGGGA"
