@@ -1,0 +1,7 @@
+data_dir: /arc/project/st-cdeboer-1/nick/GSC_seq_20240313
+
+samples:
+    input_rep_1: CCGGAACA-TTCCACCG
+    input_rep_2: TTAGTGGT-CAGACCTT
+    assembled_rep_1: CACAATCG-TGAGTTGA
+    assembled_rep_2: TAATGCAG-AACGCCTT

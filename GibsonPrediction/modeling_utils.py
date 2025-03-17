@@ -37,7 +37,7 @@ def hash_split(df, split_col, percentages, hash_func=fingerprint64, keep_bin=Fal
     # are then assigned to splits using the bin value.
     df["bin"] = df[split_col].apply(lambda x: hash_func(x) % 100)
     for i in range(len(cum_percentages) - 1):
-        splits.append(df[df['bin'].between(cum_percentages[i], cum_percentages[i + 1], inclusive="left")])
+        splits.append(df[df['bin'].between(cum_percentages[i], cum_percentages[i + 1], inclusive="left")].copy())
     
     if not keep_bin:
         for split in splits:

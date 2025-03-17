@@ -1,0 +1,9 @@
+channels:
+    - conda-forge
+    - bioconda
+dependencies:
+    - cutadapt=4.1
+    - starcode=1.4
+    - pip
+    - pip:
+        - rapidfuzz==3.9.3
