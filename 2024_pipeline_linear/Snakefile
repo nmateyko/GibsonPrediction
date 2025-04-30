@@ -86,7 +86,7 @@ rule pair:
         mem_mb=4800,
         time="01:00:00",
     shell:
-        "./NGmerge/NGmerge -1 {input.r1} -2 {input.r2} -o {output} -y -f {log} -n {threads} -t /"
+        "../NGmerge/NGmerge -1 {input.r1} -2 {input.r2} -o {output} -y -f {log} -n {threads} -t /"
         
 
 rule cluster:
