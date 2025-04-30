@@ -105,4 +105,4 @@ rule cluster:
         mem_mb=38400,
         time="01:00:00",
     shell:
-        "starcode -i {input} -o {output} -c -t {threads} -d {params.distance} > {log}"
+        "starcode -i {input} -o {output} -s -t {threads} -d {params.distance} > {log}"
