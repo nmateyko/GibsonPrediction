@@ -7,6 +7,7 @@ starcode_data/
 GibsonPrediction.egg-info/
 !old_pipeline/test/*
 cluster_logs/
-output/
+output*/
 .snakemake
 NGmerge/
+
