@@ -6,8 +6,8 @@ samples:
 
 adapters:
     up:
-        a1: "atgaccatgattacgccaGCTCTTC...AGATCGGAAGAGCACACGTCTGAAC"
-        a2: "TCCCTACACGACGCTCTTCCGATCT...GAAGAGCtggcgtaatcatggtcat"
+        a1: "atgaccatgattacgccaGCTCTTC...AGATCGGAAGAGC"
+        a2: "GCTCTTCCGATCT...GAAGAGCtggcgtaatcatggtcat"
     down:
-        a1: "GTTCAGACGTGTGCTCTTCCGATCT...GAAGAGCcactggccgtcgttttac"
-        a2: "gtaaaacgacggccagtgGCTCTTC...AGATCGGAAGAGCGTCGTGTAGGGA"
+        a1: "GCTCTTCCGATCT...GAAGAGCcactggccgtcgttttac"
+        a2: "gtaaaacgacggccagtgGCTCTTC...AGATCGGAAGAGC"
