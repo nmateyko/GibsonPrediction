@@ -1,0 +1,30 @@
+Running FastQC on assembled_rep_2
+application/gzip
+application/gzip
+Analysis complete for PX3270_TAATGCAG-AACGCCTT_1_150bp_3_lanes.merge.fastq.gz
+Analysis complete for PX3270_TAATGCAG-AACGCCTT_2_150bp_3_lanes.merge.fastq.gz
+Running FastQC on assembled_rep_1
+application/gzip
+application/gzip
+Analysis complete for PX3270_CACAATCG-TGAGTTGA_1_150bp_3_lanes.merge.fastq.gz
+Analysis complete for PX3270_CACAATCG-TGAGTTGA_2_150bp_3_lanes.merge.fastq.gz
+Running FastQC on input_rep_2
+application/gzip
+application/gzip
+Analysis complete for PX3270_TTAGTGGT-CAGACCTT_1_150bp_3_lanes.merge.fastq.gz
+Analysis complete for PX3270_TTAGTGGT-CAGACCTT_2_150bp_3_lanes.merge.fastq.gz
+Running FastQC on input_rep_1
+application/gzip
+application/gzip
+Analysis complete for PX3270_CCGGAACA-TTCCACCG_1_150bp_3_lanes.merge.fastq.gz
+Analysis complete for PX3270_CCGGAACA-TTCCACCG_2_150bp_3_lanes.merge.fastq.gz
+Running FastQC on linear_rep_2
+application/gzip
+application/gzip
+Analysis complete for PX3270_CGATGGTG-CACTACTT_1_150bp_3_lanes.merge.fastq.gz
+Analysis complete for PX3270_CGATGGTG-CACTACTT_2_150bp_3_lanes.merge.fastq.gz
+Running FastQC on linear_rep_1
+application/gzip
+application/gzip
+Analysis complete for PX3270_TAGAGGCT-CGTGGAGT_1_150bp_3_lanes.merge.fastq.gz
+Analysis complete for PX3270_TAGAGGCT-CGTGGAGT_2_150bp_3_lanes.merge.fastq.gz
